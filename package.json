@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -Rf dist && tsc --build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aikon/oreid-shared": "^1.6.0-beta.1",
     "ts-node": "^10.4.0"
   },
   "devDependencies": {
