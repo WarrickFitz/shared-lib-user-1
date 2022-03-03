@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -Rf dist && tsc --build"
+    "build": "rm -Rf dist && tsc --build",
+    "start": "node dist/src/index.js",
+    "webpack": "npx webpack build --config ./webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@aikon/oreid-shared": "^1.6.0-beta.1",
+    "source-map-loader": "^3.0.1",
     "ts-node": "^10.4.0"
   },
   "devDependencies": {
