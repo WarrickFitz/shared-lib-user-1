@@ -8,34 +8,47 @@ module.exports = (env, argv) => {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{
-            loader:'ts-loader',
-            options: {projectReferences: true}
-          }],
-        exclude: [
-          /node_modules/
-        ],        
-      },
-      {
-        test: /\.js$/,
-        enforce: "pre",
-        use: ["source-map-loader"],
+        use: ['babel-loader','ts-loader'],
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
-    fallback: {
-        "electron": false,
-    },
+    fallback: 
+      { 
+        // "util": false, 
+        // "assert": false,
+        // "events" : false,
+        // "https": false,
+        // "http": false,
+        // "url": false,
+        // "crypto": false,
+        // "stream": false,
+        // "querystring": false,
+        // "path": false,
+        // "zlib": false,
+        // "net": false,
+        // "tls": false,
+        // "fs": false,
+        // "buffer": false
+      }
+    
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
-  devtool: 'cheap-module-source-map',
-  target: ["node"],
-  mode: 'development'
+  target: ["web"],
+  mode: 'development',
+  //mode: 'production',
+  optimization: {
+    usedExports: true,
+    concatenateModules: true,
+    providedExports: true,
+    // splitChunks: {
+    //   chunks: 'all',
+    // },
+  }
 }
 };
